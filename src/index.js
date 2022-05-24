@@ -5,6 +5,7 @@ const {
   fetchAndFilterFeed,
   fetchAndFilterFeedWithSort,
 } = require("./use-cases/fetch-and-map-feed");
+const validateQueryParams = require("./middlewares/validate-query-params");
 
 require("express-async-errors");
 
@@ -17,7 +18,7 @@ app.get("/", async (req, res) => {
 
   res.send(feed);
 });
-app.get("/sort", async (req, res) => {
+app.get("/sort", validateQueryParams, async (req, res) => {
   const order = req.query.order;
 
   const feed = await fetchAndFilterFeedWithSort(RSSURL, order);
