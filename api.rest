@@ -4,4 +4,4 @@ GET http://localhost:3000
 
 ###
 
-GET http://localhost:3000/sort?order=desch
+GET http://localhost:3000/sort?order=desc
