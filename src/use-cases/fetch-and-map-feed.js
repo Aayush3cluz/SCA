@@ -2,6 +2,7 @@ const getRSSFeed = require("../utilities/rss-parser");
 const {
   convertISODateToAEST,
 } = require("../utilities/format-iso-date-to-AEST");
+const CustomError = require("../errors/custom-error");
 const fetchAndCustomizeRssFeed = async (url, sort = false, order = "asc") => {
   try {
     let feedData = await getRSSFeed(url);
@@ -32,7 +33,7 @@ const fetchAndCustomizeRssFeed = async (url, sort = false, order = "asc") => {
     };
   } catch (error) {
     console.log(error);
-    throw new Error("Failed to fetch feed");
+    throw new CustomError("Failed to fetch feed");
   }
 };
 
