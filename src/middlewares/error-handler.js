@@ -3,4 +3,5 @@ const errorHandler = (err, req, res, next) => {
     errors: [{ message: "Something went wrong" }],
   });
 };
+
 module.exports = errorHandler;

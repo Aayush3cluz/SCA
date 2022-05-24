@@ -1,7 +1,8 @@
 const express = require("express");
-const { errorHandler } = require("./middlewares/error-handler");
 const fetchAndFilterFeed = require("./use-cases/fetch-and-map-feed");
 const getRSSFeed = require("./utilities/rss-parser");
+const errorHandler = require("./middlewares/error-handler");
+
 require("express-async-errors");
 
 const app = express();
@@ -14,6 +15,7 @@ app.get("/", async (req, res) => {
   res.send(feed);
 });
 
+app.use(errorHandler);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
